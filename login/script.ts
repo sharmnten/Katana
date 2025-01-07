@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = (document.getElementById('password') as HTMLInputElement).value;
 
             try {
-                const session = await account.createSession(email, password);
+                const session = await account.createEmailPasswordSession(email, password);
                 console.log('Logged in successfully:', session);
                 const sessionId = session.$id
                 localStorage.setItem("session",sessionId)

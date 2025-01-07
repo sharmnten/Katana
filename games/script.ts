@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //const session = account.getSession(sessionId);
     }catch(error){
         console.error('Session not found:', error);
-        window.location.href = '/';
+        window.location.href = 'Katana/login';
     }
 
 
