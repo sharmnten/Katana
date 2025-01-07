@@ -1,0 +1,268 @@
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+  }
+  
+  :root {
+    --card-height: 65vh;
+    --card-width: calc(var(--card-height) / 1.5);
+    --primary-color: #5ddcff;
+    --secondary-color: #3c67e3;
+    --tertiary-color: #4e00c2;
+    --background-color: #212534;
+    --card-bg-color: #191c29;
+    --hover-text-color: rgb(88 199 250 / 100%);
+    --text-color: rgb(88 199 250 / 0%);
+  }
+  
+  * {
+    margin: 0; /* Remove all default margin */
+    padding: 0; /* Remove all default padding */
+    box-sizing: border-box; /* Prevent box model issues */
+  }
+  
+  body {
+    height: 100vh; /* Ensure body takes full height of the viewport */
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children (header, main, footer) vertically */
+    background: var(--background-color);
+    font-family: sans-serif;
+    color: var(--text-color);
+  }
+  
+  header {
+    width: 100%; /* Ensure the header takes full width */
+    background: var(--card-bg-color);
+    padding: 1rem 2rem;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  nav h1 {
+    color: var(--primary-color);
+    font-size: 2em;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-left: 1rem;
+  }
+  
+  nav ul li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  nav ul li a:hover {
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+  }
+  
+  main {
+    flex: 1; /* Take up the remaining space between header and footer */
+    text-align: center;
+  }
+  
+  p {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    margin: 20px 0;
+  }
+  
+  footer {
+    width: 100%; /* Full width */
+    text-align: center;
+    background: var(--card-bg-color);
+    padding: 1rem 0;
+  }
+  
+  footer p {
+    color: var(--primary-color);
+    font-size: 1em;
+  }
+  
+  .card {
+    background: var(--card-bg-color);
+    width: var(--card-width);
+    height: var(--card-height);
+    padding: 3px;
+    position: relative;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    font-size: 1.5em;
+    color: var(--text-color);
+    cursor: pointer;
+    font-family: cursive;
+  }
+  
+  .card:hover {
+    color: var(--hover-text-color);
+    transition: color 1s;
+  }
+  
+  .card:hover:before, .card:hover:after {
+    animation: none;
+    opacity: 0;
+  }
+  
+  .card::before {
+    content: "";
+    width: 104%;
+    height: 102%;
+    border-radius: 8px;
+    background-image: linear-gradient(var(--rotate), var(--primary-color), var(--secondary-color) 43%, var(--tertiary-color));
+    position: absolute;
+    z-index: -1;
+    top: -1%;
+    left: -2%;
+    animation: spin 2.5s linear infinite;
+  }
+  
+  .card::after {
+    position: absolute;
+    content: "";
+    top: calc(var(--card-height) / 6);
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    transform: scale(0.8);
+    filter: blur(calc(var(--card-height) / 6));
+    background-image: linear-gradient(var(--rotate), var(--primary-color), var(--secondary-color) 43%, var(--tertiary-color));
+    opacity: 1;
+    transition: opacity .5s;
+    animation: spin 2.5s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+  }
+  
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-top: 2rem;
+  }
+  
+  a:hover {
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+  }
+  
+  /* Style for all headings */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Style for all lists */
+  ul, ol {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li, ol li {
+    color: var(--primary-color);
+  }
+  
+  /* Style for buttons */
+  button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: var(--secondary-color);
+    transition: background-color 0.3s ease;
+  }
+
+/* Basic styling for the input field */
+input[type="text"] {
+    width: 50%; /* Take full width of the container */
+    padding: 10px 15px; /* Add padding inside the textbox */
+    margin: 10px 0; /* Add margin around the textbox */
+    border: 2px solid var(--primary-color); /* Use primary color for border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 1em; /* Set font size */
+    color: #fff; /* White text color for contrast */
+    background-color: #191c29; /* Dark background matching the theme */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for border color and shadow */
+    box-sizing: border-box; /* Include padding in width/height calculation */
+  }
+  
+  /* Hover effect */
+  input[type="text"]:hover {
+    border-color: var(--secondary-color); /* Darker border on hover */
+  }
+  
+  /* Focus effect */
+  input[type="text"]:focus {
+    border-color: var(--tertiary-color); /* Purple border on focus */
+    box-shadow: 0 0 8px var(--tertiary-color); /* Add a soft purple shadow on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  /* Placeholder text style */
+  input[type="text"]::placeholder {
+    color: #aaa; /* Light gray color for placeholder */
+    font-style: italic; /* Italicize the placeholder */
+  }
+
+  input[type="password"] {
+    width: 50%; /* Take full width of the container */
+    padding: 10px 15px; /* Add padding inside the textbox */
+    margin: 10px 0; /* Add margin around the textbox */
+    border: 2px solid var(--primary-color); /* Use primary color for border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 1em; /* Set font size */
+    color: #fff; /* White text color for contrast */
+    background-color: #191c29; /* Dark background matching the theme */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for border color and shadow */
+    box-sizing: border-box; /* Include padding in width/height calculation */
+  }
+  
+  /* Hover effect */
+  input[type="password"]:hover {
+    border-color: var(--secondary-color); /* Darker border on hover */
+  }
+  
+  /* Focus effect */
+  input[type="password"]:focus {
+    border-color: var(--tertiary-color); /* Purple border on focus */
+    box-shadow: 0 0 8px var(--tertiary-color); /* Add a soft purple shadow on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  /* Placeholder text style */
+  input[type="password"]::placeholder {
+    color: #aaa; /* Light gray color for placeholder */
+    font-style: italic; /* Italicize the placeholder */
+  }
+  
