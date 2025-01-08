@@ -12,23 +12,24 @@ const account = new Account(client);
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('login-form') as HTMLFormElement;
+    const loginForm = document.getElementById('login-form');
 
     if (loginForm) {
         loginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
 
-            const email = (document.getElementById('username') as HTMLInputElement).value;
-            const password = (document.getElementById('password') as HTMLInputElement).value;
+            const email = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
             try {
                 const session = await account.createEmailPasswordSession(email, password);
-                alert("success")
+                alert("success");
                 console.log('Logged in successfully:', session);
-                const sessionId = session.$id
-                localStorage.setItem("session",sessionId)
+                const sessionId = session.$id;
+                localStorage.setItem("session", sessionId);
                 window.location.href = '/games/';
             } catch (error) {
-                alert(error)
+                alert(error);
                 console.error('Login failed:', error);
             }
         });

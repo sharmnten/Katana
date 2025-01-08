@@ -6,14 +6,11 @@ client
 const account = new Account(client);
 document.addEventListener('DOMContentLoaded', () => {
     const greeting = document.getElementById('greeting');
-    try{
-    let sessionId = localStorage.getItem("session")
-    //const session = account.getSession(sessionId);
-    }catch(error){
+    try {
+        let sessionId = localStorage.getItem("session");
+        //const session = account.getSession(sessionId);
+    } catch (error) {
         console.error('Session not found:', error);
         window.location.href = 'Katana/login';
     }
-
-
-
 });
