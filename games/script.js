@@ -1,4 +1,4 @@
-import { Account, Client } from '../node_modules/appwrite';
+import { Account, Client } from 'appwrite';
 const client = new Client();
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
