@@ -21,9 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const session = await account.createEmailPasswordSession(email, password);
                 alert("success")
                 console.log('Logged in successfully:', session);
+                alert("success")
                 const sessionId = session.$id;
                 localStorage.setItem("session", sessionId);
-                window.location.href = '/games/';
+                window.location.href = '../games/index.html';
             } catch (error) {
                 alert(error)
                 console.error('Login failed:', error);
